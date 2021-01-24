@@ -59,7 +59,7 @@ window.addEventListener('load', () => {
             <th scope="row">${index + 1}</th>
             <td>${items[item].name}</td>
             <td>${items[item].quantity}</td>
-            <td class="deleteBtn">delete</td>
+            <td class="deleteBtn"><button class="btn btn-warning">delete</button></td>
         </tr>
         `
         )
