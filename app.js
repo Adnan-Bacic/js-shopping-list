@@ -52,37 +52,18 @@ window.addEventListener('load', () => {
     let content = ''
 
     
-    //only shows the last element
-
     Object.keys(items).map((item, index) => {
-        //console.log(item, index)
-
         return(
         content = content + `
         <tr>
             <th scope="row">${index + 1}</th>
             <td>${items[item].name}</td>
             <td>${items[item].quantity}</td>
-            <td class="deleteBtn" name="${items[item].name}">delete</td>
+            <td class="deleteBtn">delete</td>
         </tr>
         `
         )
     })
-
-    //forEach
-    /*
-   Object.keys(items).forEach((item, index) => {
-            //console.log(data.rates); //shows all names and rates
-                        content = content +
-                            `
-                            <tr>
-            <th scope="row">${index + 1}</th>
-            <td>${items[item].name}</td>
-            <td>${items[item].quantity}</td>
-        </tr>
-                            `
-                    });
-                    */
 
     itemsList.innerHTML = content
 
@@ -90,33 +71,26 @@ window.addEventListener('load', () => {
 
 window.addEventListener('load', () => {
     const deleteBtns = document.querySelectorAll('.deleteBtn')
-
     const items = getItems()
-    console.log('items', items)
-
-    console.log('btns', deleteBtns)
     
-
     deleteBtns.forEach((btn, index) => {
-        btn.addEventListener('click', (e) => {
-            console.log(items[0], index)
-            
-            let i
-            for(i = 0; i < items.length; i++){
-                if(btn[index] === items[i]){
-                    console.log(1)
-                } else {
-                    console.log(2)
-                }
-            }
+        btn.addEventListener('click', () => {
+            items.splice(index, 1)
+            localStorage.setItem('items', JSON.stringify(items))
 
+            location.reload()
         })
     })
 })
 
+window.addEventListener('load', () => {
+    const items = getItems()
 
-
-
+    //only show btn if there is at least 1 item
+    if(items.length == 0){
+        clearBtn.classList.add('d-none')
+    }
+})
 
 clearBtn.addEventListener('click', () => {
     localStorage.clear()
