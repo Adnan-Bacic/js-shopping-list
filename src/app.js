@@ -1,5 +1,6 @@
 const form = document.querySelector('#form')
-const inputs = document.getElementsByTagName('input')
+const itemName = document.querySelector('#item-name')
+const itemQuantity = document.querySelector('#item-quantity')
 const itemsList = document.querySelector('#itemsList')
 const clearBtn = document.querySelector('#clearBtn')
 const errorText = document.querySelector('#errorText')
@@ -21,8 +22,8 @@ form.addEventListener('submit', (e) => {
 
     const storage = getItems()
 
-    const name = inputs[0].value
-    const quantity = inputs[1].value
+    const name = itemName.value
+    const quantity = itemQuantity.value
 
     const item = {
         name: name,
