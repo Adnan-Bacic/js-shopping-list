@@ -87,7 +87,7 @@ window.addEventListener('load', () => {
     const items = getItems()
 
     //only show btn if there is at least 1 item
-    if(items.length == 0){
+    if(items.length === 0){
         clearBtn.classList.add('d-none')
     }
 })
